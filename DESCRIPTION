@@ -1,0 +1,23 @@
+Package: APSIMWheatPhenology
+Type: Package
+Title: APSIM Wheat Phenology
+Version: 0.1.0
+Authors@R: person("Bangyou", "Zheng", 
+               email = "bangyou.zheng@csiro.au", 
+               role = c("aut", "cre"))
+Description: The Agricultural Production Systems sIMulator ('APSIM', <https://www.apsim.info/>) 
+    is a widely used to simulate the agricultural systems for multiple crops. This package 
+    is rewrote the wheat phenology model in R to speed up the performance.
+License: file LICENSE
+URL: https://apsimwheatphenology.bangyou.me/,
+    https://github.com/APSIMInitiative/APSIMWheatPhenology
+BugReports: https://github.com/APSIMInitiative/APSIMWheatPhenology/issues
+Encoding: UTF-8
+LazyData: true
+Imports: weaana
+RoxygenNote: 7.1.1
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
