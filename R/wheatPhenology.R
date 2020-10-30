@@ -79,21 +79,21 @@ wheatPhenology <- function(sim, stages = 6,
     # read met file
     if (is.null(met))
     {
-        met <- readWeatherRecords(readPara("filename"))
+        met <- weaana::readWeatherRecords(readPara("filename"))
     }
-    met_infor <- siteInfor(met)
+    met_infor <- weaana::siteInfor(met)
 
-    wcal(met, FUN = dayLength, var.args = "day",
+    weaana::wcal(met, FUN = weaana::dayLength, var.args = "day",
             lat = met_infor$Latitude,
             angle = twilight,
             var.name = "photoperiod")
-    wcal(met, FUN = crown_temp_nwheat, var.args = c("maxt", "mint"),
+    weaana::wcal(met, FUN = crown_temp_nwheat, var.args = c("maxt", "mint"),
             var.name = "tempcr")
 
-    wcal(met, FUN = interpolationFunction, var.args = "tempcr",
+    weaana::wcal(met, FUN = interpolationFunction, var.args = "tempcr",
         x = fun_tt_x, y = fun_tt_y,
         var.name = "dlt_tt")
-    wcal(met, FUN = wheat_vernaliz_days, var.args = c("maxt", "mint", "tempcr"),
+    weaana::wcal(met, FUN = wheat_vernaliz_days, var.args = c("maxt", "mint", "tempcr"),
             var.name = "dlt_cumvd")
     # for multiple factors
     other_args <- list(...)
@@ -167,7 +167,7 @@ wheatPhenology <- function(sim, stages = 6,
         sowingDOY <- as.numeric(as.Date(paste(date, "-", sowingYear, sep = ""), format = "%d-%b-%Y") -
                         as.Date(paste("1-jan-", sowingYear, sep = ""), format = "%d-%b-%Y") + 1) - 1
         # Get weather records
-        growthMET <- getWeatherRecords(met, yrange = c(sowingYear, sowingYear + 1))
+        growthMET <- weaana::getWeatherRecords(met, yrange = c(sowingYear, sowingYear + 1))
 
         ttInTarget <- phe_target[[1]]
         ttInStage <- rep(0, times = f_length)

@@ -10,7 +10,7 @@
 #' if b is greater than or equal positive zero; and -abs(a), if b is less than
 #' or equal to negative zero.
 #' Example a = sign_apsim (30,-2) ! a is assigned the value -30
-#' 
+#'
 #' @param a value 1
 #' @param b value 2
 sign_apsim <- function( a, b )
@@ -26,7 +26,7 @@ sign_apsim <- function( a, b )
 
 
 #' Crown temperature from nwheat
-#' 
+#'
 #' @param maxt Maximum temperature (oC)
 #' @param mint Minimum temperature (oC)
 #' @param snow Snow depth (cm)
@@ -39,14 +39,14 @@ crown_temp_nwheat <- function( maxt, mint, snow = 0 )
     cn <- mint
     pos <- !is.na(mint) & mint < 0
     cn[pos] <- 2.0 + mint[pos] * ( 0.4 + 0.0018 * ( snow - 15 ) ^ 2 )
-    
+
     return( ( cn + cx ) / 2.0 )
 }
 
 
 
 #' Photoperiod factor
-#' 
+#'
 #' @param photoperiod photoperiod
 #' @param p_photop_sen p_photop_sen
 wheat_photoperiod_effect <- function( photoperiod, p_photop_sen )
@@ -58,7 +58,7 @@ wheat_photoperiod_effect <- function( photoperiod, p_photop_sen )
 }
 
 #' Calculate daily vernalisation and accumulate to g_cumvd
-#' 
+#'
 #' @param maxt Daily maximum Temperature
 #' @param mint Daily minimum temperature
 #' @param tempcr Crown temperature
@@ -75,18 +75,19 @@ wheat_vernaliz_days <- function( maxt, mint, tempcr )
     }
     pos1 <- !is.na(maxt) & !is.na(mint) & mint < 15.0 & maxt > 0.0
     dlt_cumvd[pos1] <- ver( maxt[pos1], mint[pos1], tempcr[pos1])
-    
+
     return( dlt_cumvd )
 }
 
 #' Calculate daily vernalisation and accumulate to g_cumvd
-#' 
+#'
 #' @param maxt Daily maximum Temperature
 #' @param mint Daily minimum temperature
 #' @param tempcr Crown temperature
-#' @param g_cumvd) cumulative vernalisation days till yesterday
+#' @param g_cumvd cumulative vernalisation days till yesterday
+#' @param dlt_cumvd delta cummulative vernalisation days
 wheat_de_vernaliz_days <- function( maxt, mint, tempcr, g_cumvd, dlt_cumvd )
-{    
+{
     pos2 <- maxt > 30. & g_cumvd + dlt_cumvd < 10. & !is.na(maxt)
     dlt_cumvd[pos2] <- - 0.5 * ( maxt[pos2] - 30. )
     dlt_cumvd <- - pmin(-(dlt_cumvd), g_cumvd)
@@ -95,7 +96,7 @@ wheat_de_vernaliz_days <- function( maxt, mint, tempcr, g_cumvd, dlt_cumvd )
 
 
 #' Vernalisation factor
-#' 
+#'
 #' @param p_vern_sens p_vern_sens
 #' @param cumvd cumvd
 #' @param dlt_cumvd dlt_cumvd
@@ -113,7 +114,7 @@ wheat_vernaliz_effect <- function( p_vern_sens, cumvd, dlt_cumvd, reqvd )
 
 
 #' lower limit
-#' 
+#'
 #' @param x x
 #' @param limit limit
 l_bound <- function( x, limit )
@@ -126,7 +127,7 @@ l_bound <- function( x, limit )
 }
 
 #' boundt
-#' 
+#'
 #' @param x x
 #' @param min min
 #' @param max max
@@ -144,10 +145,10 @@ bound <- function( x, min, max )
 }
 
 #'Return a y value from a linear interpolation function
-#' 
+#'
 #' @param x x
 #' @param y y
-#' @param tempcr tempcr
+#' @param values values
 #' @param split split
 #' @export
 interpolationFunction <- function( x, y, values, split = '\\s+' )
@@ -161,10 +162,10 @@ interpolationFunction <- function( x, y, values, split = '\\s+' )
         y <- as.numeric(strsplit(y, split)[[1]])
     }
     res <- rep(NA, length(values))
-    
+
     pos <- values < x[1]
     res[pos] <- y[1]
-    
+
     for (i in seq(length = length(x) - 1))
     {
         pos <- values >= x[i] & values < x[i + 1]
@@ -178,9 +179,9 @@ interpolationFunction <- function( x, y, values, split = '\\s+' )
 
 #' The time for sunrise and sunset
 #' from 90 degree in am and pm. +ve above the horizon, -ve below the horizon.
-#' @param  doy day of year number    
-#' @param lat latitude of site (deg) 
-#' @param long longitude of site (deg) 
+#' @param  doy day of year number
+#' @param lat latitude of site (deg)
+#' @param long longitude of site (deg)
 #' @param timezone local time
 #' @param  angle angle to measure time between, such as twilight (deg).
 #' angular distance between 90 deg and end of twilight - altitude of sun. +ve up, -ve down.
@@ -213,8 +214,8 @@ sunRiseSet <- function(doy, lat, long, timezone = 0, angle = 6, flag = 'rise')
     sinDec <- 0.39782 * sin(LL * dg2rdn)
     cosDec <- cos(asin(sinDec))
     cosH <- (cos((angle + 90)* dg2rdn) - (sinDec * sin(lat * dg2rdn))) / (cosDec * cos(lat * dg2rdn))
-    
-    if (sum(cosH > 1) > 0) 
+
+    if (sum(cosH > 1) > 0)
     {
         stop('the sun never rises on this location (on the specified date)')
     }
@@ -222,7 +223,7 @@ sunRiseSet <- function(doy, lat, long, timezone = 0, angle = 6, flag = 'rise')
     {
         stop('the sun never sets on this location (on the specified date)')
     }
-    
+
     if (flag == 'rise')
     {
         HH <- 360 - rdn2dg * acos(cosH)
@@ -236,6 +237,6 @@ sunRiseSet <- function(doy, lat, long, timezone = 0, angle = 6, flag = 'rise')
     # UT <- (UT + 24 * 100) %% 24
     localT <- UT + timezone
     localT <- (localT + 24 * 100) %% 24
-    
+
     return(localT)
 }

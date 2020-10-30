@@ -11,9 +11,9 @@ interpolationFunction(x, y, values, split = "\\\\s+")
 
 \item{y}{y}
 
-\item{split}{split}
+\item{values}{values}
 
-\item{tempcr}{tempcr}
+\item{split}{split}
 }
 \description{
 Return a y value from a linear interpolation function

@@ -13,7 +13,9 @@ wheat_de_vernaliz_days(maxt, mint, tempcr, g_cumvd, dlt_cumvd)
 
 \item{tempcr}{Crown temperature}
 
-\item{g_cumvd)}{cumulative vernalisation days till yesterday}
+\item{g_cumvd}{cumulative vernalisation days till yesterday}
+
+\item{dlt_cumvd}{delta cummulative vernalisation days}
 }
 \description{
 Calculate daily vernalisation and accumulate to g_cumvd

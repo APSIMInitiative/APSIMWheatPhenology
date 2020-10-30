@@ -14,7 +14,7 @@ URL: https://apsimwheatphenology.bangyou.me/,
 BugReports: https://github.com/APSIMInitiative/APSIMWheatPhenology/issues
 Encoding: UTF-8
 LazyData: true
-Imports: weaana
+Imports: weaana, XML
 RoxygenNote: 7.1.1
 Suggests: 
     testthat,
