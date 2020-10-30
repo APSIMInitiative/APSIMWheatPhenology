@@ -37,7 +37,6 @@ jobs:
           install.packages("remotes")
           # To get links for homepage
           remotes::install_cran("devtools")
-          remotes::install_deps(dependencies = TRUE)
           remotes::install_dev("pkgdown")
           remotes::install_cran("XML")
           remotes::install_github("byzheng/weaana")
