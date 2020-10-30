@@ -39,8 +39,8 @@ jobs:
           remotes::install_cran("devtools")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_dev("pkgdown")
-          remotes::install_cran("magrittr")
-          remotes::install_cran("reactable")
+          remotes::install_cran("XML")
+          remotes::install_github("byzheng/weaana")
         shell: Rscript {0}
 
       - name: Install package

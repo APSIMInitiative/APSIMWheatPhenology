@@ -1,4 +1,4 @@
-# APSIMWheatPhenology
+# APSIM Wheat Phenology
 
 ![R-CMD-check](https://github.com/APSIMInitiative/APSIMWheatPhenology/workflows/R-CMD-check/badge.svg)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/APSIMWheatPhenology)](https://cran.r-project.org/package=APSIMWheatPhenology)

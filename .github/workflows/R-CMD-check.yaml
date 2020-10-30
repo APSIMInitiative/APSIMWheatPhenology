@@ -66,8 +66,8 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          remotes::install_cran("magrittr")
-          remotes::install_cran("reactable")
+          remotes::install_cran("XML")
+          remotes::install_github("byzheng/weaana")
         shell: Rscript {0}
 
       - name: Session info
