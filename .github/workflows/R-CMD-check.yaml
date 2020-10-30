@@ -65,6 +65,9 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_cran("rcmdcheck")
+          remotes::install_cran("knitr")
+          remotes::install_cran("testthat")
+          remotes::install_cran("rmarkdown")
           remotes::install_cran("XML")
           remotes::install_github("byzheng/weaana")
         shell: Rscript {0}

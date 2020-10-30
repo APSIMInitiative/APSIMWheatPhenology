@@ -38,6 +38,8 @@ jobs:
           # To get links for homepage
           remotes::install_cran("devtools")
           remotes::install_dev("pkgdown")
+          remotes::install_cran("testthat")
+          remotes::install_cran("rmarkdown")
           remotes::install_cran("XML")
           remotes::install_github("byzheng/weaana")
         shell: Rscript {0}
