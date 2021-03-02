@@ -24,7 +24,7 @@ readPara <- function( name, ... )
         rapsim.glb.para <- XML::xmlInternalTreeParse( sim )
         assign( "rapsim.glb.para", rapsim.glb.para, envir = cacheEnv )
     } else {
-        rapsim.glb.para <- get(url, envir=cacheEnv)
+        rapsim.glb.para <- get("rapsim.glb.para", envir=cacheEnv)
     }
 
     # if ( !file.exists( sim ) )
