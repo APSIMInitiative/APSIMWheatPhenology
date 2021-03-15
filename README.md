@@ -5,7 +5,7 @@
 
 
 
-[APSIMWheatPhenology](https://apsimwheatphenology.bangyou.me) package rewrites [APSIM ](https://www.apsim.info/) wheat phenology model using R to speed up the performance for multiple simulations.
+[APSIMWheatPhenology](https://apsiminitiative.github.io/APSIMWheatPhenology/) package rewrites [APSIM ](https://www.apsim.info/) wheat phenology model using R to speed up the performance for multiple simulations.
 
 
 ## Installation
