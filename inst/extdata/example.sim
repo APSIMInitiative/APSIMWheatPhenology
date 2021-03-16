@@ -5,8 +5,8 @@
     <executable>%apsim%\Model\Clock.dll</executable>
     <initdata>
       <timestep_events>prepare init_step do_pasture_water process do_pasture_growth do_stock post end_step</timestep_events>
-      <start_date type="date" description="Select the start date of the simulation">1/1/1957</start_date>
-      <end_date type="date" description="Select the end date of the simulation">31/12/2013</end_date>
+      <start_date type="date" description="Select the start date of the simulation">1/1/1981</start_date>
+      <end_date type="date" description="Select the end date of the simulation">31/12/2000</end_date>
     </initdata>
   </component>
   <component name="met" executable="%apsim%\Model\Input.dll">
