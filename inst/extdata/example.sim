@@ -12,7 +12,7 @@
   <component name="met" executable="%apsim%\Model\Input.dll">
     <executable>%apsim%\Model\Input.dll</executable>
     <initdata>
-      <filename name="filename">DALBY.met</filename>
+      <filename name="filename">weather.met</filename>
     </initdata>
   </component>
   <system name="paddock" executable="%apsim%\Model\ProtocolManager.dll">
