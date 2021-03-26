@@ -13,6 +13,7 @@
 #'
 #' @param a value 1
 #' @param b value 2
+#' @export
 sign_apsim <- function( a, b )
 {
     if ( b >= 0 )
@@ -30,6 +31,7 @@ sign_apsim <- function( a, b )
 #' @param maxt Maximum temperature (oC)
 #' @param mint Minimum temperature (oC)
 #' @param snow Snow depth (cm)
+#' @export
 crown_temp_nwheat <- function( maxt, mint, snow = 0 )
 {
     cx <- NULL
@@ -49,6 +51,7 @@ crown_temp_nwheat <- function( maxt, mint, snow = 0 )
 #'
 #' @param photoperiod photoperiod
 #' @param p_photop_sen p_photop_sen
+#' @export
 wheat_photoperiod_effect <- function( photoperiod, p_photop_sen )
 {
     photop_eff <- 1. - p_photop_sen * 0.002 * ( 20. - photoperiod ) ^ 2
@@ -62,6 +65,7 @@ wheat_photoperiod_effect <- function( photoperiod, p_photop_sen )
 #' @param maxt Daily maximum Temperature
 #' @param mint Daily minimum temperature
 #' @param tempcr Crown temperature
+#' @export
 wheat_vernaliz_days <- function( maxt, mint, tempcr )
 {
     dlt_cumvd <- rep( 0.0, times = length( maxt ) )
@@ -86,6 +90,7 @@ wheat_vernaliz_days <- function( maxt, mint, tempcr )
 #' @param tempcr Crown temperature
 #' @param g_cumvd cumulative vernalisation days till yesterday
 #' @param dlt_cumvd delta cummulative vernalisation days
+#' @export
 wheat_de_vernaliz_days <- function( maxt, mint, tempcr, g_cumvd, dlt_cumvd )
 {
     pos2 <- maxt > 30. & g_cumvd + dlt_cumvd < 10. & !is.na(maxt)
@@ -101,6 +106,7 @@ wheat_de_vernaliz_days <- function( maxt, mint, tempcr, g_cumvd, dlt_cumvd )
 #' @param cumvd cumvd
 #' @param dlt_cumvd dlt_cumvd
 #' @param reqvd reqvd
+#' @export
 wheat_vernaliz_effect <- function( p_vern_sens, cumvd, dlt_cumvd, reqvd )
 {
     if ( reqvd < 0.0 ) { reqvd = 50.0 }
@@ -117,6 +123,7 @@ wheat_vernaliz_effect <- function( p_vern_sens, cumvd, dlt_cumvd, reqvd )
 #'
 #' @param x x
 #' @param limit limit
+#' @export
 l_bound <- function( x, limit )
 {
     if ( x > limit )
@@ -131,6 +138,7 @@ l_bound <- function( x, limit )
 #' @param x x
 #' @param min min
 #' @param max max
+#' @export
 bound <- function( x, min, max )
 {
     if ( x > max )
