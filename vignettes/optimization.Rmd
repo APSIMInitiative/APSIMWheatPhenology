@@ -17,3 +17,31 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(APSIMWheatPhenology)
 ```
+This page is to show how to optimize parameters related with wheat phenology (i.e. `verns_sens`, `photop_sens` and `tt_floral_initiation`).
+
+In the first step, the observations are organized in a table with all required information.
+
+```{r}
+obs <- read.csv(file = textConnection(
+"Experiment,Cultivar,MetFile,Sowing,FloweringDAS
+Exp1,Clt1,Met1,2010-05-20,70
+Exp1,Clt2,Met1,2010-05-20,73
+Exp1,Clt3,Met1,2010-05-20,80
+Exp2,Clt1,Met2,2011-05-20,82
+Exp2,Clt2,Met2,2011-05-20,85
+Exp2,Clt3,Met2,2011-05-20,90
+Exp3,Clt1,Met3,2012-05-20,82
+Exp3,Clt2,Met3,2012-05-20,85
+Exp3,Clt3,Met3,2012-05-20,90
+"
+))
+knitr::kable(obs)
+```
+
+```{r}
+vern_sens <- seq(0, 3, 0.1)
+photop_sens <- seq(0, 3, 0.1)
+tt_floral_initiation <- seq(300, 1300, 10)
+```
+
+

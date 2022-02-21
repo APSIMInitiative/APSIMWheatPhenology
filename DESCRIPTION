@@ -9,13 +9,15 @@ Description: The Agricultural Production Systems sIMulator ('APSIM', <https://ww
     is a widely used to simulate the agricultural systems for multiple crops. This package 
     is rewrote the wheat phenology model in R to speed up the performance for multiple simulations.
 License: file LICENSE
-URL: https://apsimwheatphenology.bangyou.me/,
+URL: https://apsiminitiative.github.io/APSIMWheatPhenology,
     https://github.com/APSIMInitiative/APSIMWheatPhenology
 BugReports: https://github.com/APSIMInitiative/APSIMWheatPhenology/issues
 Encoding: UTF-8
 LazyData: true
 Remotes: byzheng/weaana
-Imports: weaana, XML
+Imports: 
+    weaana (>= 0.1.2),
+    XML
 RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 3.0.0),
