@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">APSIMWheatPhenology</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/">
+  <a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -85,7 +81,7 @@
       <h1 data-toc-skip>optimization</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/blob/master/vignettes/optimization.Rmd"><code>vignettes/optimization.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/blob/HEAD/vignettes/optimization.Rmd" class="external-link"><code>vignettes/optimization.Rmd</code></a></small>
       <div class="hidden name"><code>optimization.Rmd</code></div>
 
     </div>
@@ -93,7 +89,102 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://apsimwheatphenology.bangyou.me/">APSIMWheatPhenology</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://apsiminitiative.github.io/APSIMWheatPhenology" class="external-link">APSIMWheatPhenology</a></span><span class="op">)</span></code></pre></div>
+<p>This page is to show how to optimize parameters related with wheat phenology (i.e. <code>verns_sens</code>, <code>photop_sens</code> and <code>tt_floral_initiation</code>).</p>
+<p>In the first step, the observations are organized in a table with all required information.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/textconnections.html" class="external-link">textConnection</a></span><span class="op">(</span>
+<span class="st">"Experiment,Cultivar,MetFile,Sowing,FloweringDAS
+Exp1,Clt1,Met1,2010-05-20,70
+Exp1,Clt2,Met1,2010-05-20,73
+Exp1,Clt3,Met1,2010-05-20,80
+Exp2,Clt1,Met2,2011-05-20,82
+Exp2,Clt2,Met2,2011-05-20,85
+Exp2,Clt3,Met2,2011-05-20,90
+Exp3,Clt1,Met3,2012-05-20,82
+Exp3,Clt2,Met3,2012-05-20,85
+Exp3,Clt3,Met3,2012-05-20,90
+"</span>
+<span class="op">)</span><span class="op">)</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">Experiment</th>
+<th align="left">Cultivar</th>
+<th align="left">MetFile</th>
+<th align="left">Sowing</th>
+<th align="right">FloweringDAS</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Exp1</td>
+<td align="left">Clt1</td>
+<td align="left">Met1</td>
+<td align="left">2010-05-20</td>
+<td align="right">70</td>
+</tr>
+<tr class="even">
+<td align="left">Exp1</td>
+<td align="left">Clt2</td>
+<td align="left">Met1</td>
+<td align="left">2010-05-20</td>
+<td align="right">73</td>
+</tr>
+<tr class="odd">
+<td align="left">Exp1</td>
+<td align="left">Clt3</td>
+<td align="left">Met1</td>
+<td align="left">2010-05-20</td>
+<td align="right">80</td>
+</tr>
+<tr class="even">
+<td align="left">Exp2</td>
+<td align="left">Clt1</td>
+<td align="left">Met2</td>
+<td align="left">2011-05-20</td>
+<td align="right">82</td>
+</tr>
+<tr class="odd">
+<td align="left">Exp2</td>
+<td align="left">Clt2</td>
+<td align="left">Met2</td>
+<td align="left">2011-05-20</td>
+<td align="right">85</td>
+</tr>
+<tr class="even">
+<td align="left">Exp2</td>
+<td align="left">Clt3</td>
+<td align="left">Met2</td>
+<td align="left">2011-05-20</td>
+<td align="right">90</td>
+</tr>
+<tr class="odd">
+<td align="left">Exp3</td>
+<td align="left">Clt1</td>
+<td align="left">Met3</td>
+<td align="left">2012-05-20</td>
+<td align="right">82</td>
+</tr>
+<tr class="even">
+<td align="left">Exp3</td>
+<td align="left">Clt2</td>
+<td align="left">Met3</td>
+<td align="left">2012-05-20</td>
+<td align="right">85</td>
+</tr>
+<tr class="odd">
+<td align="left">Exp3</td>
+<td align="left">Clt3</td>
+<td align="left">Met3</td>
+<td align="left">2012-05-20</td>
+<td align="right">90</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vern_sens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span>, <span class="fl">0.1</span><span class="op">)</span>
+<span class="va">photop_sens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span>, <span class="fl">0.1</span><span class="op">)</span>
+<span class="va">tt_floral_initiation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">300</span>, <span class="fl">1300</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -105,11 +196,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Bangyou Zheng.</p>
+  <p></p>
+<p>Developed by Bangyou Zheng.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -117,6 +210,8 @@
 
   
 
+
+  
 
   </body>
 </html>

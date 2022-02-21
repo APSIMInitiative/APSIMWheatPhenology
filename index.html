@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,18 +35,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">APSIMWheatPhenology</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -66,7 +62,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/">
+  <a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -83,25 +79,25 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="apsim-wheat-phenology" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#apsim-wheat-phenology" class="anchor"></a>APSIM Wheat Phenology</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="apsim-wheat-phenology">APSIM Wheat Phenology<a class="anchor" aria-label="anchor" href="#apsim-wheat-phenology"></a>
+</h1></div>
 
-<p><a href="https://apsiminitiative.github.io/APSIMWheatPhenology/">APSIMWheatPhenology</a> package rewrites <a href="https://www.apsim.info/">APSIM</a> wheat phenology model using R to speed up the performance for multiple simulations.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>Currently on <a href="https://github.com/APSIMInitiative/APSIMWheatPhenology">Github</a> only. Install with:</p>
+<p><a href="https://apsiminitiative.github.io/APSIMWheatPhenology/" class="external-link">APSIMWheatPhenology</a> package rewrites <a href="https://www.apsim.info/" class="external-link">APSIM</a> wheat phenology model using R to speed up the performance for multiple simulations.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>Currently on <a href="https://github.com/APSIMInitiative/APSIMWheatPhenology" class="external-link">Github</a> only. Install with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'APSIMInitiative/APSIMWheatPhenology'</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="wheat-phenology" class="section level2">
-<h2 class="hasAnchor">
-<a href="#wheat-phenology" class="anchor"></a>Wheat phenology</h2>
+<div class="section level2">
+<h2 id="wheat-phenology">Wheat phenology<a class="anchor" aria-label="anchor" href="#wheat-phenology"></a>
+</h2>
 <p>Wheat phenology can be calculated in multiple ways.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">met</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata/weather.met"</span>, package <span class="op">=</span> <span class="st">"APSIMWheatPhenology"</span><span class="op">)</span>
-<span class="va">sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata/example.sim"</span>, package <span class="op">=</span> <span class="st">"APSIMWheatPhenology"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">met</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/weather.met"</span>, package <span class="op">=</span> <span class="st">"APSIMWheatPhenology"</span><span class="op">)</span>
+<span class="va">sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/example.sim"</span>, package <span class="op">=</span> <span class="st">"APSIMWheatPhenology"</span><span class="op">)</span>
 <span class="co"># Flowering time using parameter in the sim file</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wheatPhenology.html">wheatPhenology</a></span><span class="op">(</span><span class="va">sim</span>, stages <span class="op">=</span> <span class="fl">6</span>, stageNames <span class="op">=</span> <span class="st">'flow'</span>, model <span class="op">=</span> <span class="st">'APSIM'</span>,
                      met <span class="op">=</span> <span class="va">met</span>, daily <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
@@ -110,24 +106,24 @@
                      met <span class="op">=</span> <span class="va">met</span>, daily <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="co"># Weather can be passed as a weaana object</span>
-<span class="va">met_data</span> <span class="op">&lt;-</span> <span class="fu">weaana</span><span class="fu">::</span><span class="fu"><a href="https://weaana.bangyou.me/reference/readWeatherRecords.html">readWeatherRecords</a></span><span class="op">(</span><span class="va">met</span><span class="op">)</span>
+<span class="va">met_data</span> <span class="op">&lt;-</span> <span class="fu">weaana</span><span class="fu">::</span><span class="fu"><a href="https://weaana.bangyou.me/reference/readWeatherRecords.html" class="external-link">readWeatherRecords</a></span><span class="op">(</span><span class="va">met</span><span class="op">)</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wheatPhenology.html">wheatPhenology</a></span><span class="op">(</span><span class="va">sim</span>, stages <span class="op">=</span> <span class="fl">6</span>, stageNames <span class="op">=</span> <span class="st">'flow'</span>, model <span class="op">=</span> <span class="st">'APSIM'</span>,
                      met <span class="op">=</span> <span class="va">met_data</span>, daily <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="co"># Multiple stages can be calculated</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wheatPhenology.html">wheatPhenology</a></span><span class="op">(</span><span class="va">sim</span>, stages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5.74</span>, <span class="fl">6</span><span class="op">)</span>, stageNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"head"</span>, <span class="st">'flow'</span><span class="op">)</span>,
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wheatPhenology.html">wheatPhenology</a></span><span class="op">(</span><span class="va">sim</span>, stages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.74</span>, <span class="fl">6</span><span class="op">)</span>, stageNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"head"</span>, <span class="st">'flow'</span><span class="op">)</span>,
                      model <span class="op">=</span> <span class="st">'APSIM'</span>,
                      met <span class="op">=</span> <span class="va">met_data</span>, daily <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="co"># Daily output can be exported</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wheatPhenology.html">wheatPhenology</a></span><span class="op">(</span><span class="va">sim</span>, stages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5.74</span>, <span class="fl">6</span><span class="op">)</span>, stageNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"head"</span>, <span class="st">'flow'</span><span class="op">)</span>,
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wheatPhenology.html">wheatPhenology</a></span><span class="op">(</span><span class="va">sim</span>, stages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.74</span>, <span class="fl">6</span><span class="op">)</span>, stageNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"head"</span>, <span class="st">'flow'</span><span class="op">)</span>,
                      model <span class="op">=</span> <span class="st">'APSIM'</span>,
                      met <span class="op">=</span> <span class="va">met_data</span>, daily <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="co"># Multiple simulations can be specified in a factor</span>
 <span class="co"># Any parameters related with plant can be used</span>
-<span class="va">factors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vern_sens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span>, photop_sens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wheatPhenology.html">wheatPhenology</a></span><span class="op">(</span><span class="va">sim</span>, stages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5.74</span>, <span class="fl">6</span><span class="op">)</span>, stageNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"head"</span>, <span class="st">'flow'</span><span class="op">)</span>,
+<span class="va">factors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vern_sens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span>, photop_sens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wheatPhenology.html">wheatPhenology</a></span><span class="op">(</span><span class="va">sim</span>, stages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.74</span>, <span class="fl">6</span><span class="op">)</span>, stageNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"head"</span>, <span class="st">'flow'</span><span class="op">)</span>,
                      model <span class="op">=</span> <span class="st">'APSIM'</span>,
                      met <span class="op">=</span> <span class="va">met_data</span>, daily <span class="op">=</span> <span class="cn">FALSE</span>,
                      factors <span class="op">=</span> <span class="va">factors</span><span class="op">)</span></code></pre></div>
@@ -137,50 +133,61 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/">https://​github.com/​APSIMInitiative/​APSIMWheatPhenology/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/issues">https://​github.com/​APSIMInitiative/​APSIMWheatPhenology/​issues</a>
-</li>
+<li><a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/APSIMInitiative/APSIMWheatPhenology/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing APSIMWheatPhenology</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Bangyou Zheng <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=APSIMWheatPhenology"><img src="http://www.r-pkg.org/badges/version/APSIMWheatPhenology" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=APSIMWheatPhenology" class="external-link"><img src="http://www.r-pkg.org/badges/version/APSIMWheatPhenology" alt="CRAN_Status_Badge"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Bangyou Zheng.</p>
+  <p></p>
+<p>Developed by Bangyou Zheng.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -188,6 +195,8 @@
 
   
 
+
+  
 
   </body>
 </html>
