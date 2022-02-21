@@ -1,7 +1,7 @@
 Package: APSIMWheatPhenology
 Type: Package
 Title: APSIM Wheat Phenology
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person("Bangyou", "Zheng", 
                email = "bangyou.zheng@csiro.au", 
                role = c("aut", "cre"))
